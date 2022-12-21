@@ -3,11 +3,12 @@ import mongoose from "mongoose";
 import { userRouter } from "./routes/user/user";
 import dotenv from "dotenv";
 import { checkToken, handleError } from "./utils/middleware";
+import cors from "cors";
 
 dotenv.config();
 const app = express();
 app.use(express.json());
-
+app.use(cors());
 app.use(checkToken);
 
 app.use("/user", userRouter);
